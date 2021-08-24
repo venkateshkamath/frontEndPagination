@@ -32,6 +32,32 @@ function App() {
       <div className="section-title">
         <h1>{loading ? "loading" : "FE Pagination"}</h1>
         <div className="underline"></div>
+        {!loading && (
+          <div className="btn-container">
+            {/* now we map the data, that is no of arrays inside arrays */}
+            <button className="prev-btn" onClick={prevPage}>
+              Prev
+            </button>
+            {data.map((_, index) => {
+              return (
+                <button
+                  onClick={() => handlePage(index)}
+                  /* button styling */ style={{ marginTop: "15px" }}
+                  className={`page-btn ${index === page && "active-btn"}`}
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+            <button className="prev-btn" onClick={nextPage}>
+              Next
+            </button>
+            
+          </div>
+        )}
+        <h4>
+          Page <span style={{ color: "red" }}>{page + 1}</span>
+        </h4>
       </div>
       <div className="followers">
         <div className="container">
